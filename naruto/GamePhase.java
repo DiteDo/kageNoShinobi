@@ -9,7 +9,6 @@ import android.widget.RelativeLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
 import com.ditedo.kagenoshinobi.R;
-import com.ditedo.kagenoshinobi.SpriteTest;
 import com.ditedo.kagenoshinobi.naruto.clan.Clan;
 import com.ditedo.kagenoshinobi.naruto.clan.NoClan;
 import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;

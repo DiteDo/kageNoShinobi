@@ -31,8 +31,8 @@ public class Map {
 			Arrays.fill(map[i], 0);
 		}
 
-		this.SPRITE_WIDTH = sprite.getWidth();
-		this.SPRITE_HEIGHT = sprite.getHeight();
+		this.SPRITE_WIDTH = sprite.getSpriteWidth();
+		this.SPRITE_HEIGHT = sprite.getSpriteHeight();
 		this.floor = sprite;
 	}
 
@@ -41,15 +41,15 @@ public class Map {
 	public boolean update(Canvas canvas, ArrayList<ActiveEntity> entities) {
 		int startingX = canvas.getWidth() / 2;
 		int startingY = 0;
-		int spriteWidth = floor.getWidth();
-		int spriteHeight = floor.getHeight();
+		int spriteWidth = floor.getSpriteWidth();
+		int spriteHeight = floor.getSpriteHeight();
 		int gapWidth = spriteWidth / 2;
 		int gapHeight = spriteHeight /2;
 
 		for (int y = 0; y < NB_SQUARE_HEIGHT; y++) {
 			for (int x = 0;x < NB_SQUARE_WIDTH; x++) {
-				int posX = x * this.floor.getWidth();
-				int posY = y * this.floor.getHeight();
+				int posX = x * this.floor.getSpriteWidth();
+				int posY = y * this.floor.getSpriteHeight();
 				//int posX = startingX + (x -y) * gapWidth;
 				//int posY = startingY + (x + y) * gapHeight;
 				//if (posX >= (-2 * gapWidth) && posX <= (width + 2 * gapWidth) && posY >= (-2 * gapHeight) && posY <= (height + 2 * gapHeight))

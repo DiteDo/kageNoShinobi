@@ -32,7 +32,7 @@ public abstract class ActiveEntity extends Entity {
 
     public ActiveEntity(Position position, Sprite sprite, Behavior behavior, Characteristic charac) {
         super(position, sprite);
-        this.box = new CollisionBox(position, sprite.getWidth(), sprite.getWidth() / 2);
+        this.box = new CollisionBox(position, sprite.getSpriteWidth(), sprite.getSpriteWidth() / 2);
         this.behavior = behavior;
         this.charac = charac;
     }
@@ -86,7 +86,7 @@ public abstract class ActiveEntity extends Entity {
     @Override
     public Position getPositionSprite() {
         int x = (int)this.position.getX() - this.box.getWidth() / 2;
-        int y = (int)this.position.getY() + this.box.getHeight() / 2 - this.sprite.getHeight();
+        int y = (int)this.position.getY() + this.box.getHeight() / 2 - this.sprite.getSpriteHeight();
         return new Position(x, y);
     }
 

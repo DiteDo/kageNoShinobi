@@ -1,8 +1,10 @@
 package com.ditedo.kagenoshinobi.naruto;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.widget.ImageView;
 
 /**
  * Created by ditedo on 01/06/15.
@@ -24,6 +26,7 @@ public class Sprite {
 
     //CONSTRUCTOR
     public Sprite(Bitmap bmp, int rows, int columns) {
+       // super(context);
         this.tileset = bmp;
         this.bmp_rows = rows;
         this.bmp_columns = columns;
@@ -39,12 +42,12 @@ public class Sprite {
     /** Give width for one sprite
      * @return width for one sprite
      */
-    public int getWidth() {return  this.width;}
+    public int getSpriteWidth() {return  this.width;}
 
     /** Give height for one sprite
      * @return height for one sprite
      */
-    public int getHeight() {return  this.height;}
+    public int getSpriteHeight() {return  this.height;}
 
     /**
      * Draw sprite on screen

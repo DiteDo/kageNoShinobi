@@ -65,8 +65,8 @@ public abstract class Entity {
 	 * 	@return sprite's position to print sprite
 	 */
 	public Position getPositionSprite() {
-		int x = (int)this.position.getX() - this.sprite.getWidth() / 2;
-		int y = (int)this.position.getY() - this.sprite.getHeight() / 2;
+		int x = (int)this.position.getX() - this.sprite.getSpriteWidth() / 2;
+		int y = (int)this.position.getY() - this.sprite.getSpriteHeight() / 2;
 		return new Position(x, y);
 	}
 
@@ -114,7 +114,7 @@ public abstract class Entity {
 	 * Draw sprite on canvas
 	 */
 	public void draw(Canvas canvas) {
-		currentFrame = sprite.draw(canvas, (int)getPositionSprite().getX(), (int)getPositionSprite().getY(), currentFrame, 0, actionType.getType());
+		currentFrame = sprite.draw(canvas, (int) getPositionSprite().getX(), (int) getPositionSprite().getY(), currentFrame, 0, actionType.getType());
 	}
 
 	/**
