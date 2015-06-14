@@ -2,6 +2,7 @@ package com.ditedo.kagenoshinobi.naruto;
 
 import android.content.Context;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * Created by ditedo on 09/06/15.
  */
 public class FightPhase extends GamePhase {
-    public FightPhase(GameView view, RelativeLayout layout, Context context) {
+    public FightPhase(GameView view, FrameLayout layout, Context context) {
         super(view, layout, context);
     }
 

@@ -38,7 +38,7 @@ public class Map {
 
 	//METHODS
 	/** Update map. Update and print all elements in map */
-	public boolean update(Canvas canvas, ArrayList<ActiveEntity> entities) {
+	public boolean draw(Canvas canvas, ArrayList<ActiveEntity> entities) {
 		int startingX = canvas.getWidth() / 2;
 		int startingY = 0;
 		int spriteWidth = floor.getSpriteWidth();
@@ -59,17 +59,6 @@ public class Map {
 			}
 		}
 
-		drawCharacter(entities, canvas);
-		return true;
-	}
-
-	public boolean drawCharacter(ArrayList<ActiveEntity> entities, Canvas canvas) {
-		Object entitiesArray[] = entities.toArray();
-		for (int i = 0; i < entities.size(); i++) {
-			ActiveEntity entity = (ActiveEntity)entitiesArray[i];
-			if (entity.isAlive())
-				entity.update(entities, canvas);
-		}
 		return true;
 	}
 }

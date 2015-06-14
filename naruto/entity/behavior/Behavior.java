@@ -42,5 +42,5 @@ public interface Behavior {
      * @param entity entity to update
      * @return type of action to draw sprite
      */
-    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity, Canvas canvas);
+    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity);
 }

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
@@ -25,6 +26,7 @@ import java.util.HashMap;
  * Created by ditedo on 09/06/15.
  */
 public abstract class GamePhase {
+
     //ATTRIBUTES
     protected enum ClanName{NOCLAN, NARA, UCHIHA;}
     protected enum BuildingName{TOWER, HEADQUARTER;}
@@ -32,7 +34,7 @@ public abstract class GamePhase {
     private GameView gameView;
     private Sprite floor;
     private Map map;
-    protected RelativeLayout gameLayout;
+    protected FrameLayout gameLayout;
 
     protected HashMap<BuildingName, Sprite> buildingSprites;
     protected HashMap<ClanName, Clan> clans;
@@ -43,7 +45,7 @@ public abstract class GamePhase {
     protected Character characters[];
 
     //CONSTRUCTOR
-    public GamePhase(GameView view, RelativeLayout gameLayout, Context context) {
+    public GamePhase(GameView view, FrameLayout gameLayout, Context context) {
         this.gameView = view;
         this.gameLayout = gameLayout;
         this.clans = new HashMap<>();
@@ -80,19 +82,27 @@ public abstract class GamePhase {
         clans.put(ClanName.NOCLAN, new NoClan(genin));
     }
 
-    public Entity getSelectedEntity() {
-        return this.selectedEntity;
-    }
 
+    /**
+     * Update all entites
+     */
+    public void update() {
+        Object entitiesArray[] = targets.toArray();
+        for (int i = 0; i < targets.size(); i++) {
+            ActiveEntity entity = (ActiveEntity)entitiesArray[i];
+            if (entity.isAlive())
+                entity.update(targets);
+        }
+    }
     /**
      * Draw map
      * @param canvas
      */
     public void draw(Canvas canvas) {
-        map.update(canvas, targets);
-        /*  Draw les menus
-            if seletedMenu -> drawMenu
-        */
+        map.draw(canvas, targets);
+        for (ActiveEntity entity : targets) {
+            entity.draw(canvas);
+        }
     }
 
     /**

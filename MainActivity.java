@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 
@@ -18,7 +19,7 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        RelativeLayout gameLayout = (RelativeLayout)findViewById(R.id.gameView);
+        FrameLayout gameLayout = (FrameLayout)findViewById(R.id.gameView);
         RelativeLayout menuLayout = (RelativeLayout)findViewById(R.id.menu);
 
         GameView game = new GameView(this, gameLayout);

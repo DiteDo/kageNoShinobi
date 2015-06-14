@@ -120,8 +120,7 @@ public abstract class Entity {
 	/**
 	 * Update entity's actions
 	 */
-	public void update(Canvas canvas) {
+	public void update() {
 		++currentFrame;
-		draw(canvas);
 	}
 }

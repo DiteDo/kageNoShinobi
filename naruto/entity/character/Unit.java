@@ -78,7 +78,7 @@ public abstract class Unit extends Character implements HitEntity {
 	 */
 	/** Attack the target with skill */
 	@Override
-	public void fight(ActiveEntity target, Canvas canvas) {
+	public void fight(ActiveEntity target) {
 		int clanDamages = clan.getCharacteristic().getDamages();
 		int unitDamages = charac.getDamages();
 		int skillDamages = ((ActiveEntity)skill).getCharacteristic().getDamages();

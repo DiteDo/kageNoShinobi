@@ -117,18 +117,17 @@ public abstract class ActiveEntity extends Entity {
      * Fight if is possible
      * @param target target to hit
      */
-    public void fight(ActiveEntity target, Canvas canvas) {}
+    public void fight(ActiveEntity target) {}
 
     /** Update actions
      *	@param targets targets to fight
      *
      *	@return false if there are no any targets
      */
-    public boolean update(ArrayList<ActiveEntity> targets, Canvas canvas) {
+    public boolean update(ArrayList<ActiveEntity> targets) {
         ++currentFrame;
         actionType = ActionType.WAIT;
-        behavior.update(targets, this, canvas);
-        draw(canvas);
+        behavior.update(targets, this);
         return true;
     }
 }

@@ -29,7 +29,7 @@ public class PassiveBehavior implements Behavior {
     }
 
     @Override
-    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity, Canvas canvas) {
+    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity) {
         entity.setActionType(Entity.ActionType.WAIT);
         entity.setCurrentFrame(0);
     }

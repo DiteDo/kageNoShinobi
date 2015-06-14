@@ -64,10 +64,10 @@ public abstract class FightingBuilding extends Building {
      * @param target target to hit
      */
     @Override
-    public void fight(ActiveEntity target, Canvas canvas) {
+    public void fight(ActiveEntity target) {
         this.actionType = ActionType.WAIT;
         for (Unit unit : unitTeam) {
-            unit.update(canvas);
+            unit.update();
             /*unit.fight(target, canvas);
             unit.setActionType(ActionType.FIGHT);
             unit.draw(canvas);*/

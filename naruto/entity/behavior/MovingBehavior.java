@@ -51,7 +51,7 @@ public class MovingBehavior implements Behavior {
      * @param entity entity to update
      */
     @Override
-    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity, Canvas canvas) {
+    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity) {
         if (target != null) {
             if (entity.getBox().isColliding(target.getBox())) {
                 findTarget(targets, entity);

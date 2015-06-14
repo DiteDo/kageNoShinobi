@@ -46,13 +46,13 @@ public class FighterBehavior implements Behavior {
     }
 
     @Override
-    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity, Canvas canvas) {
+    public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity) {
         if (entity.canAct()) {
             if (target != null && target.isAlive()) {
                 CollisionBox targetBox = target.getBox();
                 if (reachBoxes != null && reachBoxes.isColliding(targetBox)) {
                     entity.setActionType(Entity.ActionType.FIGHT);
-                    entity.fight(target, canvas);
+                    entity.fight(target);
                 } else {
                     entity.setActionType(Entity.ActionType.MOVE);
                     entity.move(target);
