@@ -39,7 +39,6 @@ public abstract class GamePhase {
     protected HashMap<BuildingName, Sprite> buildingSprites;
     protected HashMap<ClanName, Clan> clans;
 
-    protected Entity selectedEntity;
     protected ArrayList<ActiveEntity> targets;
     protected Movable buildings[];
     protected Character characters[];

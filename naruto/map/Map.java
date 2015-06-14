@@ -54,7 +54,8 @@ public class Map {
 				//int posY = startingY + (x + y) * gapHeight;
 				//if (posX >= (-2 * gapWidth) && posX <= (width + 2 * gapWidth) && posY >= (-2 * gapHeight) && posY <= (height + 2 * gapHeight))
 				if (map[y][x] == 0) {
-					this.floor.draw(canvas, posX, posY, 0, 0, 0);
+					this.floor.update(posX, posY, 0, 0, 0);
+					this.floor.draw(canvas);
 				}
 			}
 		}

@@ -65,13 +65,17 @@ public abstract class Character extends ActiveEntity {
     }
 
     /**
-     * Calculate and draw with the corresponding direction
-     * @see Entity#draw(Canvas)
+     * Calculate corresponding direction and update
+     * @see Entity#update()
      */
     @Override
-    public void draw(Canvas canvas) {
+    public boolean update(ArrayList<ActiveEntity> targets) {
         calcDirection();
-        currentFrame = sprite.draw(canvas, (int)getPositionSprite().getX(), (int)getPositionSprite().getY(), currentFrame, directionRows, actionType.getType());
+        ++currentFrame;
+        actionType = ActionType.WAIT;
+        behavior.update(targets, this);
+        currentFrame = sprite.update((int) getPositionSprite().getX(), (int) getPositionSprite().getY(), currentFrame, directionRows, actionType.getType());
+        return true;
     }
 
     /**

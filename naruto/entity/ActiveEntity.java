@@ -125,9 +125,9 @@ public abstract class ActiveEntity extends Entity {
      *	@return false if there are no any targets
      */
     public boolean update(ArrayList<ActiveEntity> targets) {
-        ++currentFrame;
         actionType = ActionType.WAIT;
         behavior.update(targets, this);
+        super.update();
         return true;
     }
 }
