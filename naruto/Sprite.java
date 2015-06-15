@@ -62,9 +62,13 @@ public class Sprite {
         int srcY = directionRows * height + (type * height);
         Rect src = new Rect(srcX, srcY, srcX + this.width, srcY + this.height);
         Rect dest = new Rect(x, y, x + this.width, y + this.height);
+<<<<<<< HEAD
 
         c.drawBitmap(this.tileset, src, dest, null);
+=======
+>>>>>>> parent of 1489a6a... Separe sprite update and draw
 
+        c.drawBitmap(this.tileset, src, dest, null);
         return currentFrame;
     }
 }
