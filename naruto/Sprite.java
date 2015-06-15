@@ -21,10 +21,6 @@ public class Sprite {
     private int width;
     /** Height for one sprite */
     private int height;
-    /** Rectangle source to draw */
-    private Rect src;
-    /** Rectangle destination to draw */
-    private  Rect dest;
 
     public static int[] DIRECTION_TO_ANIMATION_MAP = { 2, 3, 1, 0 };
 
@@ -54,27 +50,21 @@ public class Sprite {
     public int getSpriteHeight() {return  this.height;}
 
     /**
-     * Update sprite. Choose sprite corresponding to current frame, action's type and moving direction of the entity
-     * @param x
-     * @param y
-     * @param currentFrame
-     * @param directionRows
-     * @param type
-     * @return
+     * Draw sprite on screen
+     * @param c canvas to screen
+     * @param x x position
+     * @param y y position
+     * @return next current frame
      */
-    public int update(int x, int y, int currentFrame, int directionRows, int type) {
+    public int draw(Canvas c, int x, int y, int currentFrame, int directionRows, int type) {
         currentFrame = currentFrame % this.bmp_columns;
         int srcX = currentFrame * this.width;
         int srcY = directionRows * height + (type * height);
-        this.src = new Rect(srcX, srcY, srcX + this.width, srcY + this.height);
-        this.dest = new Rect(x, y, x + this.width, y + this.height);
+        Rect src = new Rect(srcX, srcY, srcX + this.width, srcY + this.height);
+        Rect dest = new Rect(x, y, x + this.width, y + this.height);
+
+        c.drawBitmap(this.tileset, src, dest, null);
+
         return currentFrame;
-    }
-    /**
-     * Draw sprite on screen
-     * @param c canvas to screen
-     */
-    public void draw(Canvas c) {
-        c.drawBitmap(this.tileset, this.src, this.dest, null);
     }
 }

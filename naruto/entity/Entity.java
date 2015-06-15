@@ -114,7 +114,7 @@ public abstract class Entity {
 	 * Draw sprite on canvas
 	 */
 	public void draw(Canvas canvas) {
-		sprite.draw(canvas);
+		currentFrame = sprite.draw(canvas, (int) getPositionSprite().getX(), (int) getPositionSprite().getY(), currentFrame, 0, actionType.getType());
 	}
 
 	/**
@@ -122,6 +122,5 @@ public abstract class Entity {
 	 */
 	public void update() {
 		++currentFrame;
-		currentFrame = sprite.update((int) getPositionSprite().getX(), (int) getPositionSprite().getY(), currentFrame, 0, actionType.getType());
 	}
 }
