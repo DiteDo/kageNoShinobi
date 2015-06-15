@@ -6,9 +6,8 @@ import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
+
 
 import com.ditedo.kagenoshinobi.naruto.GamePhase;
 import com.ditedo.kagenoshinobi.naruto.VillagePhase;
@@ -22,7 +21,7 @@ public class GameView extends SurfaceView {
     private SurfaceHolder holder;
     private GameLoopThread gameLoopThread;
 
-    public GameView(Context context, FrameLayout gameLayout) {
+    public GameView(Context context) {
         super(context);
         gameLoopThread = new GameLoopThread(this);
         holder = getHolder();
@@ -52,8 +51,7 @@ public class GameView extends SurfaceView {
             }
         });
 
-        gameLayout.addView(this);
-        phase = new VillagePhase(this, gameLayout, context);
+        phase = new VillagePhase(this);
     }
 
     public void update() {

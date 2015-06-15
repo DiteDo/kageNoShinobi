@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class FightPhase extends GamePhase {
     public FightPhase(GameView view, FrameLayout layout, Context context) {
-        super(view, layout, context);
+        super(view);
     }
 
     @Override

@@ -1,9 +1,5 @@
 package com.ditedo.kagenoshinobi.naruto;
 
-import android.content.Context;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-
 import com.ditedo.kagenoshinobi.GameView;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.MovingBehavior;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.PassiveBehavior;
@@ -17,8 +13,8 @@ import java.util.ArrayList;
  */
 public class VillagePhase extends GamePhase {
 
-    public VillagePhase(GameView view, FrameLayout layout, Context context) {
-        super(view, layout, context);
+    public VillagePhase(GameView view) {
+        super(view);
     }
 
     @Override

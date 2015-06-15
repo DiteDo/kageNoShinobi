@@ -4,16 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
 import com.ditedo.kagenoshinobi.R;
 import com.ditedo.kagenoshinobi.naruto.clan.Clan;
 import com.ditedo.kagenoshinobi.naruto.clan.NoClan;
 import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;
-import com.ditedo.kagenoshinobi.naruto.entity.Entity;
 import com.ditedo.kagenoshinobi.naruto.entity.Movable;
 import com.ditedo.kagenoshinobi.naruto.entity.building.Building;
 import com.ditedo.kagenoshinobi.naruto.entity.character.Character;
@@ -31,10 +28,8 @@ public abstract class GamePhase {
     protected enum ClanName{NOCLAN, NARA, UCHIHA;}
     protected enum BuildingName{TOWER, HEADQUARTER;}
 
-    private GameView gameView;
     private Sprite floor;
     private Map map;
-    protected FrameLayout gameLayout;
 
     protected HashMap<BuildingName, Sprite> buildingSprites;
     protected HashMap<ClanName, Clan> clans;
@@ -44,9 +39,7 @@ public abstract class GamePhase {
     protected Character characters[];
 
     //CONSTRUCTOR
-    public GamePhase(GameView view, FrameLayout gameLayout, Context context) {
-        this.gameView = view;
-        this.gameLayout = gameLayout;
+    public GamePhase(GameView view) {
         this.clans = new HashMap<>();
         this.buildingSprites = new HashMap<>();
         this.buildings = new Building[2];

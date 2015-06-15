@@ -21,9 +21,9 @@ public class Sprite {
     private int width;
     /** Height for one sprite */
     private int height;
-
+    /** Rectangle source to draw */
     private Rect src;
-
+    /** Rectangle destination to draw */
     private  Rect dest;
 
     public static int[] DIRECTION_TO_ANIMATION_MAP = { 2, 3, 1, 0 };
@@ -68,7 +68,6 @@ public class Sprite {
         int srcY = directionRows * height + (type * height);
         this.src = new Rect(srcX, srcY, srcX + this.width, srcY + this.height);
         this.dest = new Rect(x, y, x + this.width, y + this.height);
-
         return currentFrame;
     }
     /**

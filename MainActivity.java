@@ -22,8 +22,8 @@ public class MainActivity extends Activity {
         FrameLayout gameLayout = (FrameLayout)findViewById(R.id.gameView);
         RelativeLayout menuLayout = (RelativeLayout)findViewById(R.id.menu);
 
-        GameView game = new GameView(this, gameLayout);
-
+        GameView game = new GameView(this);
+        gameLayout.addView(game);
     }
 
     @Override
