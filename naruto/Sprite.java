@@ -63,8 +63,11 @@ public class Sprite {
         Rect src = new Rect(srcX, srcY, srcX + this.width, srcY + this.height);
         Rect dest = new Rect(x, y, x + this.width, y + this.height);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         c.drawBitmap(this.tileset, src, dest, null);
+=======
+>>>>>>> parent of 1489a6a... Separe sprite update and draw
 =======
 >>>>>>> parent of 1489a6a... Separe sprite update and draw
 
