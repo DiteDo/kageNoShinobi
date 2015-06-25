@@ -101,8 +101,10 @@ public abstract class GamePhase {
     }
 
     public void onTouch(MotionEvent event) {
-        if (buildingSprites.get(BuildingName.TOWER).getBox().isColliding(new CollisionPoint((int)event.getX(), (int)event.getY()))) {
-            Log.i("onTouch", "Tower");
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            if (buildingSprites.get(BuildingName.TOWER).getBox().isColliding(new CollisionPoint((int) event.getX(), (int) event.getY()))) {
+                Log.i("onTouch", "Tower");
+            }
         }
     }
     /**

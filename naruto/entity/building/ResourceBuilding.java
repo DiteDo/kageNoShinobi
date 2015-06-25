@@ -11,7 +11,7 @@ import com.ditedo.kagenoshinobi.naruto.entity.behavior.Behavior;
 /**
  * Created by ditedo on 06/06/15.
  */
-public class ResourceBuilding extends Building {
+public abstract class ResourceBuilding extends Building {
     //ATTRIBUTES
     /** Max stock size */
     protected int maxStock;
@@ -23,5 +23,21 @@ public class ResourceBuilding extends Building {
         super(position, sprite, charac, behavior);
         this.maxStock = maxStock;
         this.currentStock = 0;
+    }
+
+    /**
+     * Give the maximal stock
+     * @return give stock maximal
+     */
+    public int getMaxStock() {
+        return maxStock;
+    }
+
+    /**
+     * Give current stock
+     * @return five currentStock
+     */
+    public int getCurrentStock() {
+        return currentStock;
     }
 }
