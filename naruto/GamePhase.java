@@ -4,13 +4,17 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
 import com.ditedo.kagenoshinobi.R;
 import com.ditedo.kagenoshinobi.naruto.clan.Clan;
 import com.ditedo.kagenoshinobi.naruto.clan.NoClan;
+import com.ditedo.kagenoshinobi.naruto.collision.CollisionPoint;
 import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;
+import com.ditedo.kagenoshinobi.naruto.entity.Entity;
 import com.ditedo.kagenoshinobi.naruto.entity.Movable;
 import com.ditedo.kagenoshinobi.naruto.entity.building.Building;
 import com.ditedo.kagenoshinobi.naruto.entity.character.Character;
@@ -60,9 +64,9 @@ public abstract class GamePhase {
         Bitmap tower = BitmapFactory.decodeResource(view.getResources(), R.drawable.bat2);
         Bitmap headquarter = BitmapFactory.decodeResource(view.getResources(), R.drawable.bat);
 
-        this.floor = new Sprite(floor, 1, 1);
-        buildingSprites.put(BuildingName.TOWER, new Sprite(tower, 1, 1));
-        buildingSprites.put(BuildingName.HEADQUARTER, new Sprite(headquarter, 1, 1));
+        this.floor = new Sprite(new Position(0, 0), floor, 1, 1);
+        buildingSprites.put(BuildingName.TOWER, new Sprite(new Position(0, 0), tower, 1, 1));
+        buildingSprites.put(BuildingName.HEADQUARTER, new Sprite(new Position(0, 0), headquarter, 1, 1));
     }
 
     /**
@@ -80,9 +84,7 @@ public abstract class GamePhase {
      * Update all entites
      */
     public void update() {
-        Object entitiesArray[] = targets.toArray();
-        for (int i = 0; i < targets.size(); i++) {
-            ActiveEntity entity = (ActiveEntity)entitiesArray[i];
+        for (ActiveEntity entity : targets) {
             if (entity.isAlive())
                 entity.update(targets);
         }
@@ -98,6 +100,11 @@ public abstract class GamePhase {
         }
     }
 
+    public void onTouch(MotionEvent event) {
+        if (buildingSprites.get(BuildingName.TOWER).getBox().isColliding(new CollisionPoint((int)event.getX(), (int)event.getY()))) {
+            Log.i("onTouch", "Tower");
+        }
+    }
     /**
      * Initialize entities and their behavior
      */

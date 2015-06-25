@@ -19,8 +19,7 @@ import java.util.ArrayList;
  */
 public abstract class Character extends ActiveEntity {
     //ATTRIBUTES
-    /** Row int sprite sheet to print sprite */
-    private int directionRows = 0;
+
     /** Angle of the direction */
     private double angle;
     /** Moving object to move */
@@ -71,7 +70,7 @@ public abstract class Character extends ActiveEntity {
     @Override
     public void draw(Canvas canvas) {
         calcDirection();
-        currentFrame = sprite.draw(canvas, (int)getPositionSprite().getX(), (int)getPositionSprite().getY(), currentFrame, directionRows, actionType.getType());
+        super.draw(canvas);
     }
 
     /**

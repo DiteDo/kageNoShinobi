@@ -7,40 +7,24 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ditedo.kagenoshinobi.naruto.*;
+import com.ditedo.kagenoshinobi.naruto.collision.CollisionBox;
 
 public abstract class Entity {
 	//ATTRIBUTES
-	/** Type of action that the entity doing. Use to print corresponding sprite */
-	public static enum ActionType {
-		WAIT(0), MOVE(0), FIGHT(4);
-
-		private int type;
-
-		ActionType(int type) {
-			this.type = type;
-		}
-
-		public int getType() {
-			return type;
-		}
-	}
-
 	/** Position of the entity */
 	protected Position position;
-	/** Sprite to draw on screen */
-	protected Sprite sprite;
+	/** Collision box */
+	protected CollisionBox box;
 	/** Current frame of sprite */
 	protected int currentFrame = 0;
-	/** Current action entity */
-	protected ActionType actionType = actionType = ActionType.WAIT;
 
 	//CONSTRUCTOR
 	public Entity() {
 	}
 
-	public Entity(Position position, Sprite sprite) {
+	public Entity(Position position, CollisionBox box) {
 		this.position = position;
-		this.sprite = sprite;
+		this.box = box;
 	}
 
 	//METHODS
@@ -48,27 +32,16 @@ public abstract class Entity {
 	 * ***********************GET**********************
 	 */
 
-	/**
-	 *  Give entity's sprite
-	 * 	@return Sprite
-	 */
-	public Sprite getSprite() {return this.sprite;}
+	/** Give collision box */
+	public CollisionBox getBox() {
+		return this.box;
+	}
 
 	/**
 	 * 	Give center entity's position
 	 *	@return position
 	 */
 	public Position getPosition() {return this.position;}
-
-	/**
-	 * 	Give sprite's position to print sprite. Center of sprite sub half width and half height to get top left coordinate
-	 * 	@return sprite's position to print sprite
-	 */
-	public Position getPositionSprite() {
-		int x = (int)this.position.getX() - this.sprite.getSpriteWidth() / 2;
-		int y = (int)this.position.getY() - this.sprite.getSpriteHeight() / 2;
-		return new Position(x, y);
-	}
 
 	/**
 	 * Give the current frame
@@ -91,14 +64,6 @@ public abstract class Entity {
 	}
 
 	/**
-	 * Set the current action type
-	 * @param type new action type
-	 */
-	public void setActionType(ActionType type) {
-		this.actionType = type;
-	}
-
-	/**
 	 * Set the current frame
 	 * @param currentFrame new current frame
 	 */
@@ -113,14 +78,5 @@ public abstract class Entity {
 	/**
 	 * Draw sprite on canvas
 	 */
-	public void draw(Canvas canvas) {
-		currentFrame = sprite.draw(canvas, (int) getPositionSprite().getX(), (int) getPositionSprite().getY(), currentFrame, 0, actionType.getType());
-	}
-
-	/**
-	 * Update entity's actions
-	 */
-	public void update() {
-		++currentFrame;
-	}
+	public abstract void draw(Canvas canvas);
 }

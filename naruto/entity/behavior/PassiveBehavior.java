@@ -30,7 +30,7 @@ public class PassiveBehavior implements Behavior {
 
     @Override
     public void update(ArrayList<ActiveEntity> targets, ActiveEntity entity) {
-        entity.setActionType(Entity.ActionType.WAIT);
+        entity.setActionType(ActiveEntity.ActionType.WAIT);
         entity.setCurrentFrame(0);
     }
 }

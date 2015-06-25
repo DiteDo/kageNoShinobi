@@ -51,18 +51,18 @@ public class FighterBehavior implements Behavior {
             if (target != null && target.isAlive()) {
                 CollisionBox targetBox = target.getBox();
                 if (reachBoxes != null && reachBoxes.isColliding(targetBox)) {
-                    entity.setActionType(Entity.ActionType.FIGHT);
+                    entity.setActionType(ActiveEntity.ActionType.FIGHT);
                     entity.fight(target);
                 } else {
-                    entity.setActionType(Entity.ActionType.MOVE);
+                    entity.setActionType(ActiveEntity.ActionType.MOVE);
                     entity.move(target);
                 }
             } else {
                 findTarget(targets, entity);
-                entity.setActionType(Entity.ActionType.WAIT);
+                entity.setActionType(ActiveEntity.ActionType.WAIT);
                 entity.setCurrentFrame(0);
             }
         } else
-            entity.setActionType(Entity.ActionType.WAIT);
+            entity.setActionType(ActiveEntity.ActionType.WAIT);
     }
 }

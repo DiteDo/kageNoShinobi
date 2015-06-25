@@ -60,13 +60,16 @@ public class GameView extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.save();
         canvas.drawColor(Color.BLACK);
         phase.draw(canvas);
+        canvas.restore();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
             synchronized (getHolder()) {
+                phase.onTouch(event);
             }
         return true;
     }

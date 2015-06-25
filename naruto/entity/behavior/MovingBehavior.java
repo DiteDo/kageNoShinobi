@@ -57,7 +57,7 @@ public class MovingBehavior implements Behavior {
                 findTarget(targets, entity);
             } else {
                 entity.move(target);
-                entity.setActionType(Entity.ActionType.MOVE);
+                entity.setActionType(ActiveEntity.ActionType.MOVE);
             }
         } else {
             findTarget(targets, entity);

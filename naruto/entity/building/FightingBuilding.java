@@ -67,7 +67,7 @@ public abstract class FightingBuilding extends Building {
     public void fight(ActiveEntity target) {
         this.actionType = ActionType.WAIT;
         for (Unit unit : unitTeam) {
-            unit.update();
+            //unit.update();
             /*unit.fight(target, canvas);
             unit.setActionType(ActionType.FIGHT);
             unit.draw(canvas);*/

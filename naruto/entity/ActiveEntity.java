@@ -16,14 +16,32 @@ import java.util.ArrayList;
  */
 public abstract class ActiveEntity extends Entity {
     //ATTRIBUTES
+    /** Type of action that the entity doing. Use to print corresponding sprite */
+    public static enum ActionType {
+        WAIT(0), MOVE(0), FIGHT(4);
+
+        private int type;
+
+        ActionType(int type) {
+            this.type = type;
+        }
+
+        public int getType() {
+            return type;
+        }
+    }
     /** Behavior of the entity */
     protected Behavior behavior;
-    /** Collision box on the floor */
-    protected CollisionBox box;
     /** Entity characteristic */
     protected Characteristic charac;
+    /** Sprite to draw on screen */
+    protected Sprite sprite;
     /** Can act or not */
     protected boolean canAct = true;
+    /** Current action entity */
+    protected ActionType actionType = actionType = ActionType.WAIT;
+    /** Row int sprite sheet to print sprite */
+    protected int directionRows = 0;
 
     //CONSTRUCTOR
     public ActiveEntity() {
@@ -31,8 +49,8 @@ public abstract class ActiveEntity extends Entity {
     }
 
     public ActiveEntity(Position position, Sprite sprite, Behavior behavior, Characteristic charac) {
-        super(position, sprite);
-        this.box = new CollisionBox(position, sprite.getSpriteWidth(), sprite.getSpriteWidth() / 2);
+        super(position, new CollisionBox(position, sprite.getWidth(), sprite.getWidth() / 2));
+        this.sprite = sprite;
         this.behavior = behavior;
         this.charac = charac;
     }
@@ -42,11 +60,11 @@ public abstract class ActiveEntity extends Entity {
      * ***********************GET**********************
      */
 
-
-    /** Give collision box */
-    public CollisionBox getBox() {
-        return this.box;
-    }
+    /**
+     *  Give entity's sprite
+     * 	@return Sprite
+     */
+    public Sprite getSprite() {return this.sprite;}
 
     /**
      * 	Give characteristic entity
@@ -76,18 +94,23 @@ public abstract class ActiveEntity extends Entity {
     }
 
     /**
+     * 	Give sprite's position to print sprite
+     * 	@return sprite's position to print sprite
+     */
+    public Position getPositionSprite() {
+        return sprite.getPosition();
+    }
+
+    /**
      * ***********************SET**********************
      */
 
     /**
-     * 	Give sprite's position to print sprite
-     * 	@return sprite's position to print sprite
+     * Set the current action type
+     * @param type new action type
      */
-    @Override
-    public Position getPositionSprite() {
-        int x = (int)this.position.getX() - this.box.getWidth() / 2;
-        int y = (int)this.position.getY() + this.box.getHeight() / 2 - this.sprite.getSpriteHeight();
-        return new Position(x, y);
+    public void setActionType(ActionType type) {
+        this.actionType = type;
     }
 
     /**
@@ -124,10 +147,16 @@ public abstract class ActiveEntity extends Entity {
      *
      *	@return false if there are no any targets
      */
-    public boolean update(ArrayList<ActiveEntity> targets) {
+    public void update(ArrayList<ActiveEntity> targets) {
+        int spriteX = (int) position.getX() - box.getWidth() / 2;
+        int spriteY = (int) position.getY() + box.getHeight() / 2 - sprite.getHeight();
         ++currentFrame;
         actionType = ActionType.WAIT;
         behavior.update(targets, this);
-        return true;
+        currentFrame = sprite.update(spriteX, spriteY, currentFrame, directionRows, actionType.getType());
+    }
+
+    public void draw(Canvas canvas) {
+        sprite.draw(canvas);
     }
 }
