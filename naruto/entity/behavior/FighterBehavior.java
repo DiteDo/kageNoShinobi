@@ -13,18 +13,18 @@ import java.util.ArrayList;
 /**
  * Created by ditedo on 04/06/15.
  */
-public class FighterBehavior implements Behavior {
+public class FighterBehavior extends Behavior {
     //ATTRIBUTES
     /** Reach boxes to fight */
     private CollisionsBoxes reachBoxes;
-    /** Target to fight */
-    private ActiveEntity target;
 
     //METHODS
+    @Override
     public CollisionsBoxes getReachBoxes() {
         return this.reachBoxes;
     }
 
+    @Override
     public void setReachBoxes(CollisionsBoxes boxes) {
         this.reachBoxes = boxes;
     }

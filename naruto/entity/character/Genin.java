@@ -17,6 +17,11 @@ public class Genin extends Unit {
 		@param clan membership's clan
 	*/
 	public Genin(Position position, Clan clan, Behavior behavior) {
-		super(clan, new Sprite(new Position(0, 0), clan.getBitmap(Type.GENIN), 8, 6), position, new BasicMove(), new Characteristic(new BasicDamage(20), new BasicLifePoint(100)), behavior);
+		super(clan, new Sprite(new Position(0, 0),
+				clan.getBitmap(Type.GENIN), 8, 6),
+				position, new BasicMove(),
+				new Characteristic(new BasicDamage(20), new BasicLifePoint(100)),
+				behavior,
+				1500);
 	}
 }

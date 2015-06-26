@@ -13,26 +13,8 @@ import java.util.ArrayList;
  * Created by ditedo on 04/06/15.
  * Moving behavior move the entity to different random place in loop
  */
-public class MovingBehavior implements Behavior {
+public class MovingBehavior extends Behavior {
     //ATTRIBUTES
-    /** Target to move */
-    private ActiveEntity target;
-
-    /**
-     * @see Behavior#setReachBoxes(CollisionsBoxes)
-     */
-    @Override
-    public void setReachBoxes(CollisionsBoxes reach) {
-
-    }
-
-    /**
-     * @see Behavior#getReachBoxes()
-     */
-    @Override
-    public CollisionsBoxes getReachBoxes() {
-        return null;
-    }
 
     /**
      * Find a random place to move
