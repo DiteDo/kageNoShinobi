@@ -1,4 +1,4 @@
-package com.ditedo.kagenoshinobi.naruto.entity.building;
+package com.ditedo.kagenoshinobi.naruto.entity.building.product;
 
 /**
  * Created by ditedo on 26/06/15.

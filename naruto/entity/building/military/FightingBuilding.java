@@ -1,4 +1,4 @@
-package com.ditedo.kagenoshinobi.naruto.entity.building;
+package com.ditedo.kagenoshinobi.naruto.entity.building.military;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,6 +9,7 @@ import com.ditedo.kagenoshinobi.naruto.characteristic.Characteristic;
 import com.ditedo.kagenoshinobi.naruto.collision.CollisionsBoxes;
 import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.Behavior;
+import com.ditedo.kagenoshinobi.naruto.entity.building.Building;
 import com.ditedo.kagenoshinobi.naruto.entity.character.Unit;
 
 import java.util.ArrayList;

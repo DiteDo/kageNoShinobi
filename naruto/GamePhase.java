@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
@@ -30,12 +31,12 @@ public abstract class GamePhase {
 
     //ATTRIBUTES
     protected enum ClanName{NOCLAN, NARA, UCHIHA;}
-    protected enum BuildingName{TOWER, HEADQUARTER;}
+    public static enum BitmapName{FLOOR, TOWER, HEADQUARTER, FOOD_PRODUCT;}
 
     private Sprite floor;
     private Map map;
 
-    protected HashMap<BuildingName, Sprite> buildingSprites;
+    protected HashMap<BitmapName, Bitmap> bitmaps;
     protected HashMap<ClanName, Clan> clans;
 
     protected Entity selectedEntity;
@@ -46,11 +47,11 @@ public abstract class GamePhase {
     //CONSTRUCTOR
     public GamePhase(GameView view) {
         this.clans = new HashMap<>();
-        this.buildingSprites = new HashMap<>();
-        this.buildings = new Building[2];
+        this.bitmaps = new HashMap<>();
+        this.buildings = new Building[3];
         this.characters = new Character[2];
         initClans(view);
-        initSprite(view);
+        loadBitmap(view);
         this.map = new Map(floor);
         initEntity();
     }
@@ -59,14 +60,14 @@ public abstract class GamePhase {
      * Load sprites
      * @param view
      */
-    private void initSprite(GameView view) {
-        Bitmap floor = BitmapFactory.decodeResource(view.getResources(), R.drawable.sol_carre);
-        Bitmap tower = BitmapFactory.decodeResource(view.getResources(), R.drawable.bat2);
-        Bitmap headquarter = BitmapFactory.decodeResource(view.getResources(), R.drawable.bat);
+    private void loadBitmap(GameView view) {
+        bitmaps.put(BitmapName.FLOOR, BitmapFactory.decodeResource(view.getResources(), R.drawable.sol_carre));
+        bitmaps.put(BitmapName.HEADQUARTER, BitmapFactory.decodeResource(view.getResources(), R.drawable.bat2));
+        bitmaps.put(BitmapName.TOWER, BitmapFactory.decodeResource(view.getResources(), R.drawable.bat));
+        bitmaps.put(BitmapName.FOOD_PRODUCT, BitmapFactory.decodeResource(view.getResources(), R.drawable.bat2));
 
-        this.floor = new Sprite(new Position(0, 0), floor, 1, 1);
-        buildingSprites.put(BuildingName.TOWER, new Sprite(new Position(0, 0), tower, 1, 1));
-        buildingSprites.put(BuildingName.HEADQUARTER, new Sprite(new Position(0, 0), headquarter, 1, 1));
+
+        this.floor = new Sprite(new Position(0, 0), bitmaps.get(BitmapName.FLOOR), 1, 1);
     }
 
     /**
@@ -102,9 +103,7 @@ public abstract class GamePhase {
 
     public void onTouch(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            if (buildingSprites.get(BuildingName.TOWER).getBox().isColliding(new CollisionPoint((int) event.getX(), (int) event.getY()))) {
-                Log.i("onTouch", "Tower");
-            }
+
         }
     }
     /**

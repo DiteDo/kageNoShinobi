@@ -1,6 +1,5 @@
 package com.ditedo.kagenoshinobi.naruto.entity;
 
-import android.content.Context;
 import android.graphics.Canvas;
 
 import com.ditedo.kagenoshinobi.naruto.Position;
@@ -42,23 +41,42 @@ public abstract class ActiveEntity extends Entity {
     protected ActionType actionType = actionType = ActionType.WAIT;
     /** Row int sprite sheet to print sprite */
     protected int directionRows = 0;
+    /** Time to built this entity */
+    private long buildTime;
 
     //CONSTRUCTOR
     public ActiveEntity() {
         super();
     }
 
-    public ActiveEntity(Position position, Sprite sprite, Behavior behavior, Characteristic charac) {
+    /**
+     * Create an Active entity
+     * @see Entity#Entity(Position, CollisionBox)
+     * @param sprite sprite of this
+     * @param behavior behavior of this
+     * @param charac lifes and damages point of this
+     * @param buildTime time to build this
+     */
+    public ActiveEntity(Position position, Sprite sprite, Behavior behavior, Characteristic charac, long buildTime) {
         super(position, new CollisionBox(position, sprite.getWidth(), sprite.getWidth() / 2));
         this.sprite = sprite;
         this.behavior = behavior;
         this.charac = charac;
+        this.buildTime = buildTime;
     }
 
     //METHODS
     /**
      * ***********************GET**********************
      */
+
+    /**
+     * Give time to built this entity
+     * @return give time to built this entity
+     */
+    public long getBuildTime() {
+        return buildTime;
+    }
 
     /**
      *  Give entity's sprite

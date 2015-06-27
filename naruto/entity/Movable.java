@@ -13,15 +13,17 @@ import com.ditedo.kagenoshinobi.naruto.map.Map;
  * Created by ditedo on 04/06/15.
  */
 public abstract class Movable extends ActiveEntity {
-    //ATTRIBUTES
 
     //CONSTRUCTOR
-    public Movable(Position position, Sprite sprite, Behavior behavior, Characteristic charac) {
-        super(position, sprite, behavior, charac);
+    /**
+     * Create a movable entity
+     * @see ActiveEntity#ActiveEntity(Position, Sprite, Behavior, Characteristic, long)
+     */
+    public Movable(Position position, Sprite sprite, Behavior behavior, Characteristic charac, long builtTime) {
+        super(position, sprite, behavior, charac, builtTime);
     }
 
     //METHODS
-
     /**
      * Align position to map cells
      * @param x set x position

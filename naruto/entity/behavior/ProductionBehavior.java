@@ -1,8 +1,7 @@
 package com.ditedo.kagenoshinobi.naruto.entity.behavior;
 
-import com.ditedo.kagenoshinobi.naruto.collision.CollisionsBoxes;
 import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;
-import com.ditedo.kagenoshinobi.naruto.entity.building.Product;
+import com.ditedo.kagenoshinobi.naruto.entity.building.product.Product;
 
 import java.util.ArrayList;
 

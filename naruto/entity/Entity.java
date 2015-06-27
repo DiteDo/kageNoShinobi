@@ -22,6 +22,11 @@ public abstract class Entity {
 	public Entity() {
 	}
 
+	/**
+	 * Create a new entity width position and collision box
+ 	 * @param position position of this entity
+	 * @param box collision box on the map floor of this entity
+	 */
 	public Entity(Position position, CollisionBox box) {
 		this.position = position;
 		this.box = box;

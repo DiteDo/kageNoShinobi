@@ -1,25 +1,23 @@
-package com.ditedo.kagenoshinobi.naruto.entity.building;
+package com.ditedo.kagenoshinobi.naruto.entity.building.military;
 
 import com.ditedo.kagenoshinobi.naruto.Position;
 import com.ditedo.kagenoshinobi.naruto.Sprite;
 import com.ditedo.kagenoshinobi.naruto.characteristic.Characteristic;
-import com.ditedo.kagenoshinobi.naruto.entity.ActiveEntity;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.Behavior;
+import com.ditedo.kagenoshinobi.naruto.entity.building.product.Product;
 import com.ditedo.kagenoshinobi.naruto.entity.character.Unit;
-
-import java.util.ArrayList;
 
 /**
  * Train unit for war
  * Created by ditedo on 26/06/15.
  */
-public class SchoolingBuilding extends MilitaryBuilding implements Product{
+public class TrainingBuilding extends MilitaryBuilding implements Product {
     //ATTRIBUTES
     /** end time to train unit in queue */
     private long endTime;
 
     //CONSTRUCTOR
-    public SchoolingBuilding(Position position, Sprite sprite, Characteristic charac, Behavior behavior, int maxStock) {
+    public TrainingBuilding(Position position, Sprite sprite, Characteristic charac, Behavior behavior, int maxStock) {
         super(position, sprite, charac, behavior, maxStock);
     }
 
@@ -36,7 +34,7 @@ public class SchoolingBuilding extends MilitaryBuilding implements Product{
     /** Add a unit to train */
     public void addToQueue(Unit unit) {
         if (units.size() < maxStock) {
-            endTime = System.currentTimeMillis() + unit.getTrainingTime();
+            endTime = System.currentTimeMillis() + unit.getBuildTime();
             units.add(unit);
         }
     }

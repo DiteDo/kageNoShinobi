@@ -1,14 +1,12 @@
 package com.ditedo.kagenoshinobi.naruto;
 
 import android.content.Context;
-import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import com.ditedo.kagenoshinobi.GameView;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.FighterBehavior;
 import com.ditedo.kagenoshinobi.naruto.entity.behavior.PassiveBehavior;
-import com.ditedo.kagenoshinobi.naruto.entity.building.Tower;
+import com.ditedo.kagenoshinobi.naruto.entity.building.military.Tower;
 import com.ditedo.kagenoshinobi.naruto.entity.character.Genin;
 
 import java.util.ArrayList;
@@ -23,8 +21,8 @@ public class FightPhase extends GamePhase {
 
     @Override
     protected void initEntity() {
-        this.buildings[0] = new Tower(new Position(26, 26), buildingSprites.get(BuildingName.HEADQUARTER), new PassiveBehavior());
-        this.buildings[1] = new Tower(new Position(100, 650), buildingSprites.get(BuildingName.TOWER), new FighterBehavior());
+        this.buildings[0] = new Tower(new Position(26, 26), bitmaps, new PassiveBehavior());
+        this.buildings[1] = new Tower(new Position(100, 650), bitmaps, new FighterBehavior());
         this.characters[0] = new Genin(new Position(500, 500), clans.get(ClanName.NOCLAN), new FighterBehavior());
         this.characters[1] = new Genin(new Position(600, 200), clans.get(ClanName.NOCLAN), new FighterBehavior());
         targets = new ArrayList<>();

@@ -29,16 +29,19 @@ public abstract class Unit extends Character implements HitEntity {
 	protected Skill skill;
 	/** Unit clan */
 	protected Clan clan;
-	/** Time to train this unit */
-	protected long trainingTime;
 
 	//CONSTRUCTOR
-	public Unit(Clan clan, Sprite sprite, Position position, Move move, Characteristic charac, Behavior behavior, long trainingTime) {
-		super(position, sprite, charac, move, behavior);
+
+	/**
+	 * Create a new fighting unit
+	 * @see Character#Character(Position, Sprite, Characteristic, Move, Behavior, long)
+	 * @param clan define the clan of this unit
+	 */
+	public Unit(Clan clan, Sprite sprite, Position position, Move move, Characteristic charac, Behavior behavior, long buildTime) {
+		super(position, sprite, charac, move, behavior, buildTime);
 		this.clan = clan;
 		this.skill = clan.getSkill().create(position, box);
 		this.behavior.setReachBoxes(this.skill.getReachBoxes());
-		this.trainingTime = trainingTime;
 	}
 
 	//METHODS
@@ -53,13 +56,6 @@ public abstract class Unit extends Character implements HitEntity {
 		return behavior.getReachBoxes();
 	}
 
-	/**
-	 * Give time to train this unit
-	 * @return give time to train this unit
-	 */
-	public long getTrainingTime() {
-		return trainingTime;
-	}
 	/**
 	 * ***********************SET**********************
 	 */

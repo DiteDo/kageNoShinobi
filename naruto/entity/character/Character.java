@@ -30,8 +30,13 @@ public abstract class Character extends ActiveEntity {
         super();
     }
 
-    public Character(Position position, Sprite sprite, Characteristic charac, Move move, Behavior behavior) {
-        super(position, sprite, behavior, charac);
+    /**
+     * Create a character
+     * @see ActiveEntity#ActiveEntity(Position, Sprite, Behavior, Characteristic, long)
+     * @param move type of move of this
+     */
+    public Character(Position position, Sprite sprite, Characteristic charac, Move move, Behavior behavior, long builtTime) {
+        super(position, sprite, behavior, charac, builtTime);
         this.move = move;
     }
 
